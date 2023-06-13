@@ -1,0 +1,71 @@
+version: '3.7'
+
+networks:
+  style-transfer-bot:
+
+services:
+  publisher:
+    build: ./publisher
+    volumes:
+      - './publisher/src:/app:rw'
+      - './images_storage:/images_storage:rw'
+    restart: unless-stopped
+    ports:
+      - 8080:5000
+    networks:
+      - style-transfer-bot
+    environment:
+      - TELEGRAM_API_TOKEN=
+      - TELEGRAM_ACCESS_ID=
+      - RABBITMQ_DEFAULT_USER=maria
+      - RABBITMQ_DEFAULT_PASS=123456
+      - RABBITMQ_PORT=5672
+
+  consumer:
+    build: ./consumer
+    volumes:
+      - './consumer/src:/app:rw'
+      - './images_storage:/images_storage:rw'
+      - './models: /models:rw'
+    restart: unless-stopped
+    ports:
+      - 8081:5001
+    networks:
+      - style-transfer-bot
+    environment:
+      - TELEGRAM_API_TOKEN=
+      - TELEGRAM_ACCESS_ID=
+      - RABBITMQ_DEFAULT_USER=maria
+      - RABBITMQ_DEFAULT_PASS=123456
+      - RABBITMQ_PORT=5672
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - ./data/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - style-transfer-bot
+    environment:
+      - POSTGRES_USER=maria
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=stdb
+
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    hostname: rabbitmq
+    restart: always
+    networks:
+      - style-transfer-bot
+    environment:
+      - RABBITMQ_DEFAULT_USER=maria
+      - RABBITMQ_DEFAULT_PASS=123456
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672

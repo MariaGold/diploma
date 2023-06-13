@@ -1,4 +1,21 @@
-.ipynb_checkpoints
-experiments/.ipynb_checkpoints
+tgbot/consumer/src/__pycache__
+tgbot/consumer/src/Modules/__pycache__
+tgbot/consumer/src/Modules/ControlNet/__pycache__
 
-.DS_Store
+tgbot/data/db/*
+!tgbot/data/db/.gitkeep
+
+tgbot/images_storage/ControlNet/*
+!tgbot/images_storage/ControlNet/.gitkeep
+
+tgbot/images_storage/LoRA/*
+!tgbot/images_storage/LoRA/.gitkeep
+
+tgbot/models/sd-controlnet-canny/*
+!tgbot/models/sd-controlnet-canny/.gitkeep
+
+tgbot/models/stable-diffusion-v1-5/*
+!tgbot/models/stable-diffusion-v1-5/.gitkeep
+
+tgbot/publisher/src/Modules/__pycache__
+tgbot/publisher/src/.env
