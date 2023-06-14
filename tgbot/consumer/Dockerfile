@@ -11,7 +11,7 @@ RUN pip install -U pip requests pika
 RUN pip install opencv-python numpy Pillow python-dotenv telebot psycopg2
 RUN pip install torch torchaudio torchvision tqdm accelerate
 RUN pip install transformers diffusers==0.14.0
-# RUN pip install git+https://github.com/huggingface/diffusers
+RUN pip install git+https://github.com/cloneofsimo/lora.git 
 
 EXPOSE 8081
 
