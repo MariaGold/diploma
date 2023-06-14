@@ -28,6 +28,13 @@ services:
       - './images_storage:/images_storage:rw'
       - './models: /models:rw'
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     ports:
       - 8081:5001
     networks:
