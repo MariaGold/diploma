@@ -11,7 +11,13 @@ class Consumer:
         self.wait_messages()
 
     def connect(self):
-        parameters = pika.URLParameters('amqp://maria:123456@rabbitmq:5672')
+        # parameters = pika.URLParameters('amqp://maria:123456@rabbitmq:5672')
+        credentials = pika.PlainCredentials('maria', '123456')
+        parameters = pika.ConnectionParameters(host='rabbitmq',
+                                           port=5672,
+                                           virtual_host='/',
+                                           credentials=credentials,
+                                           heartbeat=600)
         self.connection = pika.BlockingConnection(parameters)
 
     def get_channel(self):

@@ -15,8 +15,8 @@ services:
     networks:
       - style-transfer-bot
     environment:
-      - TELEGRAM_API_TOKEN=
-      - TELEGRAM_ACCESS_ID=
+      - TELEGRAM_API_TOKEN=6292748732:AAGPrGbifS9x5qlwnvm8J-LbzB1xzts3wnM
+      - TELEGRAM_ACCESS_ID=6292748732
       - RABBITMQ_DEFAULT_USER=maria
       - RABBITMQ_DEFAULT_PASS=123456
       - RABBITMQ_PORT=5672
@@ -26,7 +26,7 @@ services:
     volumes:
       - './consumer/src:/app:rw'
       - './images_storage:/images_storage:rw'
-      - './models: /models:rw'
+      - './models:/models:rw'
     restart: unless-stopped
     deploy:
       resources:
@@ -40,8 +40,8 @@ services:
     networks:
       - style-transfer-bot
     environment:
-      - TELEGRAM_API_TOKEN=
-      - TELEGRAM_ACCESS_ID=
+      - TELEGRAM_API_TOKEN=6292748732:AAGPrGbifS9x5qlwnvm8J-LbzB1xzts3wnM
+      - TELEGRAM_ACCESS_ID=6292748732
       - RABBITMQ_DEFAULT_USER=maria
       - RABBITMQ_DEFAULT_PASS=123456
       - RABBITMQ_PORT=5672
