@@ -1,6 +1,6 @@
 # Master's Thesis
 
-## ![Abstract](https://downloader.disk.yandex.ru/preview/5ed7d9919dcb2af908dbc4283aba20ce86262bf3a73f4286fc26a0b75e0eb177/64891c40/McP72MjPXbUEsspx3DimPtq4gDq7QMmwej4No8eiekxL7x36c3PY1nLQvodAvpyoNxHyHhtALCOGpkAZF9gQZQ%3D%3D?uid=0&filename=1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+## ![Abstract](https://i.imgur.com/iCf22Fk.png)
 ## Abstract
 <table>
 <tr>
@@ -17,6 +17,7 @@
 [Diploma](https://docs.google.com/document/d/1CSeM0fYHYugK_CLm7hD8S6BV0ALlk122fC7sCN3rgHA/edit?usp=sharing)
 
 ## Architecture
+## ![Architecture](https://i.imgur.com/wm6SDI2.png)
 
 The application consists of several services wrapped into docker-containers. 
 - Producer (manages messages from users and sends tasks in a queue to Consumer using AMQP protocol)
